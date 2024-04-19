@@ -1,25 +1,27 @@
-# Mission 2
+# Mission 3
 
-## Part 0
+## Part 0-2
 
-[Link to video]https://drive.google.com/file/d/12Kg71yChSLxg06KJDKPHSFy2uJt-uPxD/view?usp=drive_link 
+[Link to video] https://drive.google.com/file/d/1VIB5MfKPLTjtqICOsmRe_OLtsD3PWulB/view?usp=sharing
 
-## Part1
+## Part 3
 
-- Вопрос 1	 
-> Ответ  SSH - это способ безопасного доступа к компьютеру или серверу издалека. Он защищает данные, которые вы отправляете и получаете, чтобы никто другой не мог их прочитать или изменить.
+- Запрос 1	 
+**SELECT** username **FROM** users
 
-- Вопрос 2	 
-> Ответ  публичный ключ должен быть добавлен в файл ~/.ssh/authorized_keys на сервере
+- Запрос 2	 
+**SELECT** users.username, **COUNT(*) AS** number_of_sent_messages 
+**FROM** messages
+**JOIN** users ON messages.from = users.id
+**GROUP BY** users.username
 
-- Вопрос 3	 
-> Ответ  Для получения сообщений с серверов Telegram бот может использовать два метода:
+- Запрос 3	 
+**SELECT** users.username, **COUNT(*) AS** number_of_received_messages 
+**FROM** messages
+**JOIN** users **ON** messages.**TO** = users.id
+**GROUP BY** users.username
+**ORDER by** number_of_received_messages **DESC**
+**LIMIT** 1
 
-1. Long polling: Клиент (бот) отправляет запрос на сервер и ожидает ответа. Сервер задерживает ответ до появления новых сообщений или истечения времени ожидания. После этого сервер отправляет ответ клиенту, который затем отправляет новый запрос, поддерживая постоянное соединение.
-2. Webhooks: Сервер Telegram отправляет автоматические уведомления на указанный URL-адрес, когда появляется новое сообщение. Этот метод более эффективен, так как не требует постоянного поддержания открытого сетевого соединения, что делает его более экономичным по сравнению с long polling.
-
-- Вопрос 4	 
-> Ответ  issues - это механизм отслеживания задач, ошибок, идей и запросов на улучшение в проекте. Он позволяет пользователям предлагать и обсуждать изменения или проблемы, связанные с проектом, и дает возможность команде проекта управлять этими запросами. https://github.com/nodejs/node/issues/18587 , https://github.com/tensorflow/tensorflow/issues/65675 
-
-- Вопрос 5	 
-> Ответ  Чтобы пустая папка была включена в репозиторий Git, можно добавить в неё временный файл, который будет отслеживаться Git. Это может быть любой файл, например, пустой файл с названием '.gitkeep'.
+- Запрос 4	 
+Я не  поняла, как это сделать
